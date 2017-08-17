@@ -32,9 +32,7 @@ Restart LIRC: ```sudo /etc/init.d/lirc restart```
 GOOS=linux GOARCH=arm GOARM=5 go build -v app.go
 ```
 2. SCP app binary to system
-3. Install redis: ```apt update && apt install redis-server -y```
-4. Install supervisor: ```apt install supervisor```
-5. Copy over supervisor.conf to /etc/supervisord/conf.d/
-6. Create logs: ```touch /var/log/lirc_server.log && touch /var/log/redis.log```
-7. Modify redis to not run as daemon: ```sed -i "s/daemonize.*/daemonize no/g" /etc/redis/redis.conf```
-8. Start supervisor: ```supervisorctl reread && supervisorctl update```
+3. Install supervisor: ```apt install supervisor```
+4. Copy over supervisor.conf to /etc/supervisord/conf.d/
+5. Create logs: ```touch /var/log/lirc_server.log```
+6. Start supervisor: ```supervisorctl reread && supervisorctl update```

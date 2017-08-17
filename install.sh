@@ -44,17 +44,12 @@ dtoverlay=lirc-rpi,gpio_in_pin=23,gpio_out_pin=22
 dtparam=gpio_in_pull=up
 EOF
 
-echo ">>> Installing redis-server..."
-apt update && apt install redis-server -y
-sed -i "s/daemonize.*/daemonize no/g" /etc/redis/redis.conf
-
 echo ">>> Installing supervisor..."
 apt install supervisor
 cp supervisor.conf /etc/supervisord/conf.d/
 
 echo ">>> Creating log files..."
-touch /var/log/lirc_server.log && touch /var/log/redis.log
-
+touch /var/log/lirc_server.log
 
 echo ">>> Updating supervisor..."
 supervisorctl reread
